@@ -1,0 +1,8 @@
+*.pth
+*.onnx
+models/
+data/
+step5_train.py
+step4_model_architecture.py
+Dockerfile
+requirements.txt
