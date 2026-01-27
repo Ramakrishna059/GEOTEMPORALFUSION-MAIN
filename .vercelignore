@@ -1,8 +1,56 @@
+# Ignore Backend & Heavy AI Files
+# =====================================
+# All Python files
+*.py
+*.pyc
+*.pyo
+*.pyd
+
+# Python cache and environments
+__pycache__/
+*.egg-info/
+.venv/
+venv/
+env/
+.Python
+
+# AI Models and Data
 *.pth
 *.onnx
+*.h5
+*.pkl
+*.joblib
 models/
 data/
-step5_train.py
-step4_model_architecture.py
+
+# Docker files
 Dockerfile
+.dockerignore
+
+# Python dependencies
 requirements.txt
+setup.py
+
+# Training and processing scripts
+step1_*.py
+step2_*.py
+step3_*.py
+step4_*.py
+step5_*.py
+step6_*.py
+main_geospatial_v3.py
+generate_mega_dataset.py
+create_dirs.py
+run.py
+verify_deploy.py
+
+# Documentation
+SRS_DOCUMENT.md
+README_HF.md
+
+# Tests
+tests/
+*.pytest_cache/
+
+# Config files that might contain backend logic
+config.py

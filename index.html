@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTemporalFusion - AI Wildfire Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .logo {
+            font-size: 60px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #4ade80;
+            font-size: 1.2em;
+        }
+        
+        .api-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .api-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 15px;
+            background: rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .warning {
+            background: rgba(251, 191, 36, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .warning strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🔥</div>
+        <h1>GeoTemporalFusion</h1>
+        <p class="subtitle">AI-Powered Wildfire Risk Prediction System</p>
+        
+        <div class="status">
+            <strong>✅ Frontend Deployed Successfully</strong>
+            <p>This is the landing page for the GeoTemporalFusion project</p>
+        </div>
+        
+        <div class="info-box">
+            <h2>🎯 About This Project</h2>
+            <p>GeoTemporalFusion combines geospatial data analysis with temporal weather patterns to predict wildfire risks using advanced deep learning models.</p>
+        </div>
+        
+        <div class="info-box">
+            <h2>✨ Features</h2>
+            <ul class="feature-list">
+                <li>Real-time fire risk prediction using AI models</li>
+                <li>Geospatial image analysis (128x128 resolution)</li>
+                <li>24-hour temporal weather pattern integration</li>
+                <li>PyTorch-based deep learning architecture</li>
+                <li>FastAPI REST API backend</li>
+            </ul>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Backend API</strong>
+            <p>The Python backend and AI models are deployed separately on <strong>Hugging Face Spaces</strong> for optimal performance with 16GB RAM.</p>
+            <p>This Vercel deployment only hosts the frontend landing page.</p>
+        </div>
+        
+        <div class="info-box">
+            <h2>🚀 API Endpoints (Hugging Face)</h2>
+            <p>The backend API provides the following endpoints:</p>
+            <ul class="feature-list">
+                <li><code>GET /</code> - API documentation</li>
+                <li><code>GET /health</code> - Health check</li>
+                <li><code>GET /model/info</code> - Model information</li>
+                <li><code>POST /predict</code> - Fire risk prediction</li>
+            </ul>
+        </div>
+        
+        <div class="links">
+            <a href="https://github.com/Ramakrishna059/GEOTEMPORALFUSION-MAIN" class="api-link" target="_blank">
+                📂 View on GitHub
+            </a>
+            <a href="https://huggingface.co/spaces" class="api-link" target="_blank">
+                🤗 Backend API (Hugging Face)
+            </a>
+        </div>
+        
+        <div class="info-box" style="margin-top: 30px; text-align: center; font-size: 0.9em; opacity: 0.8;">
+            <p>Built with PyTorch, FastAPI, and deployed on Hugging Face Spaces</p>
+            <p style="margin-top: 10px;">© 2026 GeoTemporalFusion Project</p>
+        </div>
+    </div>
+</body>
+</html>
