@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Data (exclude large datasets)
+data/raw/images/
+*.csv
+
+# Git
+.git/
+.gitignore
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Mobile app
+mobile-app/
+
+# Deployment files
+.vercelignore
+vercel.json
+
+# Training artifacts (keep only the final model)
+training_history*.json
+step1_*.py
+step2_*.py
+step3_*.py
+step6_*.py
+generate_mega_dataset.py
+main_geospatial_v3.py
+create_dirs.py
+run.py
+setup.py
+verify_deploy.py
+SRS_DOCUMENT.md
