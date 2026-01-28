@@ -1,0 +1,31 @@
+# ============================================================================
+# RENDER.COM DEPLOYMENT CONFIGURATION
+# ============================================================================
+# Full-Stack GeoTemporalFusion - Frontend + Backend
+# Deploy with: Push to GitHub, then connect in Render Dashboard
+# ============================================================================
+
+services:
+  # Backend API + Static Frontend
+  - type: web
+    name: geotemporal-fusion
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 10000
+    # Static files routing
+    staticPublishPath: ./
+    routes:
+      - type: rewrite
+        source: /
+        destination: /index.html
+      - type: rewrite
+        source: /api/*
+        destination: /api/*

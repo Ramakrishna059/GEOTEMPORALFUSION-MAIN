@@ -20,7 +20,8 @@ Run locally:
 
 from fastapi import FastAPI, HTTPException, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any
 import torch
@@ -139,8 +140,9 @@ app = FastAPI(
     title="GeoTemporalFusion API",
     description="🔥 AI-Powered Wildfire Risk Prediction using Satellite Imagery and Weather Data",
     version="2.0.0",
-    docs_url="/",
-    redoc_url="/docs"
+    docs_url="/api/docs",
+    redoc_url="/api/redoc",
+    openapi_url="/api/openapi.json"
 )
 
 # CORS middleware for frontend integration
@@ -209,7 +211,7 @@ async def cleanup():
 # ============================================================
 # ENDPOINTS
 # ============================================================
-@app.get("/health", response_model=HealthResponse, tags=["System"])
+@app.get("/api/health", response_model=HealthResponse, tags=["System"])
 async def health_check():
     """
     Health check endpoint for monitoring.
@@ -226,7 +228,7 @@ async def health_check():
     )
 
 
-@app.get("/model/info", response_model=ModelInfoResponse, tags=["Model"])
+@app.get("/api/model/info", response_model=ModelInfoResponse, tags=["Model"])
 async def model_info():
     """
     Get information about the loaded model.
@@ -250,7 +252,7 @@ async def model_info():
     )
 
 
-@app.post("/predict", response_model=PredictionResponse, tags=["Prediction"])
+@app.post("/api/predict", response_model=PredictionResponse, tags=["Prediction"])
 async def predict_fire_risk(request: PredictionRequest):
     """
     Generate fire risk prediction from satellite image and weather data.
@@ -344,7 +346,7 @@ async def predict_fire_risk(request: PredictionRequest):
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
 
-@app.post("/predict/image", tags=["Prediction"])
+@app.post("/api/predict/image", tags=["Prediction"])
 async def predict_from_upload(
     file: UploadFile = File(..., description="Satellite image file (PNG/JPG)")
 ):
@@ -398,6 +400,19 @@ async def predict_from_upload(
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
+
+
+# ============================================================
+# STATIC FILE SERVING (For Render Full-Stack)
+# ============================================================
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
+async def serve_frontend():
+    """Serve the frontend HTML page"""
+    index_path = os.path.join(BASE_DIR, "index.html")
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            return HTMLResponse(content=f.read())
+    return HTMLResponse(content="<h1>GeoTemporalFusion API</h1><p>Frontend not found. Visit /docs for API documentation.</p>")
 
 
 # ============================================================

@@ -167,36 +167,79 @@
             </ul>
         </div>
         
-        <div class="warning">
-            <strong>⚠️ Backend API</strong>
-            <p>The Python backend and AI models are deployed separately on <strong>Hugging Face Spaces</strong> for optimal performance with 16GB RAM.</p>
-            <p>This Vercel deployment only hosts the frontend landing page.</p>
+        <div class="status">
+            <strong>🔥 Full-Stack Deployment</strong>
+            <p>Frontend + Backend API running together on Vercel!</p>
         </div>
         
         <div class="info-box">
-            <h2>🚀 API Endpoints (Hugging Face)</h2>
-            <p>The backend API provides the following endpoints:</p>
-            <ul class="feature-list">
-                <li><code>GET /</code> - API documentation</li>
-                <li><code>GET /health</code> - Health check</li>
-                <li><code>GET /model/info</code> - Model information</li>
-                <li><code>POST /predict</code> - Fire risk prediction</li>
-            </ul>
+            <h2>🚀 Test API Endpoints</h2>
+            <p>Click the buttons below to test the live API:</p>
+        </div>
+        
+        <div class="links">
+            <a href="/api" class="api-link" target="_blank">
+                📖 API Documentation
+            </a>
+            <a href="/api/health" class="api-link" target="_blank">
+                ❤️ Health Check
+            </a>
+            <a href="/api/model/info" class="api-link" target="_blank">
+                🧠 Model Info
+            </a>
+        </div>
+        
+        <div class="info-box" id="api-status">
+            <h2>📊 API Status</h2>
+            <p style="text-align: center;">Testing connection...</p>
         </div>
         
         <div class="links">
             <a href="https://github.com/Ramakrishna059/GEOTEMPORALFUSION-MAIN" class="api-link" target="_blank">
                 📂 View on GitHub
             </a>
-            <a href="https://huggingface.co/spaces" class="api-link" target="_blank">
-                🤗 Backend API (Hugging Face)
-            </a>
         </div>
         
         <div class="info-box" style="margin-top: 30px; text-align: center; font-size: 0.9em; opacity: 0.8;">
-            <p>Built with PyTorch, FastAPI, and deployed on Hugging Face Spaces</p>
+            <p>Built with PyTorch, FastAPI, and deployed on Vercel</p>
             <p style="margin-top: 10px;">© 2026 GeoTemporalFusion Project</p>
         </div>
     </div>
+    
+    <script>
+        // Test API connection on page load
+        async function testAPI() {
+            const statusDiv = document.getElementById('api-status');
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = `
+                        <h2>✅ API Status</h2>
+                        <p style="color: #4ade80; text-align: center;">
+                            <strong>Connected!</strong><br>
+                            Status: ${data.status}<br>
+                            Message: ${data.message || 'API is running'}
+                        </p>
+                    `;
+                } else {
+                    throw new Error('API returned error');
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <h2>⚠️ API Status</h2>
+                    <p style="color: #fbbf24; text-align: center;">
+                        <strong>Connection Issue</strong><br>
+                        ${error.message}<br>
+                        The API might be starting up. Try refreshing in a moment.
+                    </p>
+                `;
+            }
+        }
+        
+        // Run test on page load
+        window.addEventListener('load', testAPI);
+    </script>
 </body>
 </html>
