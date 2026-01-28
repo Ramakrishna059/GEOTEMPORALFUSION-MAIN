@@ -11,7 +11,7 @@ echo "📍 Working Directory: $(pwd)"
 echo "🔧 Port: $PORT"
 
 # Start FastAPI with Uvicorn
-exec uvicorn app.main:app \
+exec uvicorn main_geospatial_v3:app \
     --host 0.0.0.0 \
     --port ${PORT:-10000} \
     --workers 1 \
